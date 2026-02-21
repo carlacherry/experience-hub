@@ -11,7 +11,7 @@ export interface CounterRowProps {
 
 export function CounterRow({ value, label, onIncrement, onDecrement }: CounterRowProps) {
   return (
-    <div className="flex items-center justify-between bg-[#f8fafc] rounded-full px-3 py-2 h-9 w-full">
+    <div className="flex items-center justify-between bg-counter-bg rounded-full px-3 py-2 h-9 w-full">
       <button
         onClick={onDecrement}
         disabled={value === 0}

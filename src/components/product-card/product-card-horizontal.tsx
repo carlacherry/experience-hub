@@ -51,15 +51,15 @@ export function ProductCardHorizontal({
   }
 
   return (
-    <div className="bg-white border border-[#dde4ec] rounded-2xl shadow-[0px_4px_8px_0px_rgba(0,0,0,0.06)] px-4 py-3 flex items-center w-fit">
-      <div className="flex gap-2 items-start w-[333px]">
+    <div className="bg-white border border-card-border rounded-2xl shadow-[0px_4px_8px_0px_rgba(0,0,0,0.06)] px-4 py-3 flex items-center w-full max-w-[383px]">
+      <div className="flex gap-2 items-start w-full">
         {/* Thumbnail */}
         <div className="relative w-[90px] h-[127px] rounded-sm shrink-0 overflow-hidden">
           <Image src={image} alt={name} fill className="object-cover" />
         </div>
 
         {/* Product Details */}
-        <div className="flex flex-col gap-3 w-[235px]">
+        <div className="flex flex-col gap-3 flex-1 min-w-0">
           <div className="flex flex-col gap-0.5">
             <p className="text-base font-bold text-black leading-snug">{name}</p>
             <p className="text-sm text-slate-600 leading-snug">{units}</p>

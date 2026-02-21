@@ -1,6 +1,6 @@
 import { Tag } from "lucide-react";
 
-interface PriceBadgeProps {
+export interface PriceBadgeProps {
   price: number;
   originalPrice?: number;
   currency?: string;
@@ -15,13 +15,13 @@ export function PriceBadge({
 }: PriceBadgeProps) {
   if (variant === "promo") {
     return (
-      <div className="flex items-center gap-1 bg-[#ecfdf5] rounded-full px-2 py-0.5 h-5">
-        <Tag size={10} className="text-[#186c54]" />
-        <span className="text-sm font-bold text-[#186c54] leading-none">
+      <div className="flex items-center gap-1 bg-promo-bg rounded-full px-2 py-0.5 h-5">
+        <Tag size={10} className="text-promo-text" />
+        <span className="text-sm font-bold text-promo-text leading-none">
           {currency}{price.toFixed(2)}
         </span>
         {originalPrice && (
-          <span className="text-xs text-[#0b996d] line-through leading-none">
+          <span className="text-xs text-promo-strikethrough line-through leading-none">
             {currency}{originalPrice.toFixed(2)}
           </span>
         )}
@@ -30,12 +30,12 @@ export function PriceBadge({
   }
 
   return (
-    <div className="flex items-center gap-1 bg-[#f4fafc] rounded-full px-2 py-0.5 whitespace-nowrap">
-      <span className="text-sm text-[#1e2125] leading-snug">
+    <div className="flex items-center gap-1 bg-price-badge-bg rounded-full px-2 py-0.5 whitespace-nowrap">
+      <span className="text-sm text-price-badge-text leading-snug">
         {price.toFixed(2)}
       </span>
       {originalPrice && (
-        <span className="text-xs text-[#5c6264] line-through leading-snug">
+        <span className="text-xs text-price-badge-strikethrough line-through leading-snug">
           {originalPrice.toFixed(2)}
         </span>
       )}

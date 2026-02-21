@@ -5,6 +5,22 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+    /* Design tokens */
+    --color-promo-bg: #ecfdf5;
+    --color-promo-text: #186c54;
+    --color-promo-strikethrough: #0b996d;
+    --color-price-badge-bg: #f4fafc;
+    --color-price-badge-text: #1e2125;
+    --color-price-badge-strikethrough: #5c6264;
+    --color-counter-bg: #f8fafc;
+    --color-card-border: #dde4ec;
+    --color-card-border-subtle: #bfc7ce;
+    --color-suggestion-card-bg: #f9fafc;
+    --color-suggestion-card-border: #ecedef;
+    --color-suggestion-chip: #deeaff;
+    --color-suggestion-chip-hover: #c8deff;
+    --color-text-muted: #5e6c78;
+
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
     --radius-lg: var(--radius);

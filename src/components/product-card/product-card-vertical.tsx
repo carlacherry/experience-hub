@@ -39,7 +39,7 @@ export function ProductCardVertical({
   }
 
   return (
-    <div className="bg-white border border-[#bfc7ce] rounded-[14px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.06)] p-3 flex flex-col w-[160px] h-[272px] overflow-hidden">
+    <div className="bg-white border border-card-border-subtle rounded-[14px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.06)] p-3 flex flex-col w-[160px] h-[272px] overflow-hidden">
       {/* Thumbnail */}
       <div className="relative w-full h-[116px] rounded-[4px] overflow-hidden shrink-0">
         <Image src={image} alt={name} fill className="object-cover" />
@@ -56,7 +56,7 @@ export function ProductCardVertical({
           />
           <div className="flex flex-col gap-0.5">
             {minOrderLabel && (
-              <p className="text-[11px] text-[#5e6c78] leading-snug">{minOrderLabel}</p>
+              <p className="text-[11px] text-text-muted leading-snug">{minOrderLabel}</p>
             )}
             <p className="text-sm text-black leading-snug line-clamp-2 min-h-[2.5rem]">{name}</p>
           </div>

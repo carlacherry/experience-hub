@@ -8,3 +8,4 @@ export { CounterRow } from "./counter-row";
 export type { CounterRowProps } from "./counter-row";
 
 export { PriceBadge } from "./price-badge";
+export type { PriceBadgeProps } from "./price-badge";

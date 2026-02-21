@@ -32,17 +32,17 @@ export function ProductList({
   const visibleProducts = products.slice(0, MAX_PRODUCTS);
 
   return (
-    <div className="bg-white rounded-2xl overflow-hidden w-[383px]">
-      <div className="flex flex-col divide-y divide-[#f1f5f9]">
-        {visibleProducts.map((product, index) => (
-          <div key={index} className="px-4 py-3 flex justify-center">
+    <div className="bg-white rounded-2xl overflow-hidden w-full max-w-[383px]">
+      <div className="flex flex-col divide-y divide-slate-100">
+        {visibleProducts.map((product) => (
+          <div key={product.name} className="px-4 py-3 flex justify-center">
             <ProductCardHorizontal {...product} />
           </div>
         ))}
       </div>
 
       {onSeeAll && (
-        <div className="flex justify-center py-3 border-t border-[#f1f5f9]">
+        <div className="flex justify-center py-3 border-t border-slate-100">
           <button
             onClick={onSeeAll}
             className="text-sm text-black underline underline-offset-2 hover:opacity-70"

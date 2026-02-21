@@ -21,15 +21,15 @@ export function SuggestionCard({
   onSuggestionClick,
 }: SuggestionCardProps) {
   return (
-    <div className="bg-[#f9fafc] border border-[#ecedef] rounded-xl p-4 flex flex-col gap-4 w-[244px]">
+    <div className="bg-suggestion-card-bg border border-suggestion-card-border rounded-xl p-4 flex flex-col gap-4 w-[244px]">
       {/* Header */}
       <div className="flex flex-col gap-2">
         <div className="relative size-[61px] shrink-0">
           <Image src={icon} alt={title} fill className="object-contain" />
         </div>
         <div className="flex flex-col gap-1">
-          <p className="text-base font-bold text-[#010101] leading-snug">{title}</p>
-          <p className="text-sm text-[#010101] leading-snug">{description}</p>
+          <p className="text-base font-bold text-black leading-snug">{title}</p>
+          <p className="text-sm text-black leading-snug">{description}</p>
         </div>
       </div>
 
@@ -40,7 +40,7 @@ export function SuggestionCard({
             key={suggestion.id}
             onClick={() => onSuggestionClick(suggestion)}
             aria-label={`Sugerir: ${suggestion.label}`}
-            className="bg-[#deeaff] rounded-2xl h-[46px] px-4 text-base text-black text-left hover:bg-[#c8deff] transition-colors w-full"
+            className="bg-suggestion-chip rounded-2xl h-[46px] px-4 text-base text-black text-left hover:bg-suggestion-chip-hover transition-colors w-full"
           >
             {suggestion.label}
           </button>
