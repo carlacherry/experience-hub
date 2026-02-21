@@ -31,7 +31,7 @@ export default function Home() {
             href={href}
             className="group border-b border-[#e5e5e5] px-6 py-8 flex items-end hover:bg-[#f9f9f9] transition-colors"
           >
-            <span className="text-[clamp(48px,8vw,96px)] font-semibold text-black leading-none tracking-tight group-hover:translate-x-2 transition-transform duration-200">
+            <span className="font-display text-[clamp(48px,8vw,96px)] font-bold text-black leading-none tracking-tight group-hover:translate-x-2 transition-transform duration-200">
               {label}
             </span>
           </Link>
