@@ -5,6 +5,7 @@ import { ProductList } from "@/components/product-list";
 import { ProductCarousel } from "@/components/product-carousel";
 import { PromoCard } from "@/components/promo-card";
 import { SuggestionCard } from "@/components/suggestion-card";
+import { SuggestionCarousel } from "@/components/suggestion-carousel";
 
 const imgThumbnail = "/7f12ea1300756f144a0fb5daaf68dbfc01103a46.png";
 
@@ -69,6 +70,45 @@ export default function ProductCardDemo() {
         products={mockProducts}
         onSeeAll={() => console.log("See all clicked")}
       />
+
+      <div className="w-[560px] px-6">
+        <SuggestionCarousel
+          cards={[
+            {
+              icon: "/figma-assets/4794afc92222286db5854f0c3c3cb0dc7f271f09.png",
+              title: "¿En qué te ayudo?",
+              description: "Elige un tema para comenzar",
+              suggestions: [
+                { id: "1", label: "Ver productos en oferta" },
+                { id: "2", label: "Consultar mi pedido" },
+                { id: "3", label: "Hablar con un asesor" },
+              ],
+              onSuggestionClick: (s) => console.log("Card 1:", s.label),
+            },
+            {
+              icon: "/figma-assets/4794afc92222286db5854f0c3c3cb0dc7f271f09.png",
+              title: "Explorar categorías",
+              description: "¿Qué estás buscando hoy?",
+              suggestions: [
+                { id: "1", label: "Bebidas" },
+                { id: "2", label: "Snacks" },
+                { id: "3", label: "Lácteos" },
+              ],
+              onSuggestionClick: (s) => console.log("Card 2:", s.label),
+            },
+            {
+              icon: "/figma-assets/4794afc92222286db5854f0c3c3cb0dc7f271f09.png",
+              title: "Novedades",
+              description: "Mira lo que llegó esta semana",
+              suggestions: [
+                { id: "1", label: "Nuevos productos" },
+                { id: "2", label: "Promociones activas" },
+              ],
+              onSuggestionClick: (s) => console.log("Card 3:", s.label),
+            },
+          ]}
+        />
+      </div>
 
       <SuggestionCard
         icon="/figma-assets/4794afc92222286db5854f0c3c3cb0dc7f271f09.png"
