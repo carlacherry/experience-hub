@@ -3,6 +3,8 @@
 import { ProductCardHorizontal, ProductCardVertical } from "@/components/product-card";
 import { ProductList } from "@/components/product-list";
 import { ProductCarousel } from "@/components/product-carousel";
+import { PromoCard } from "@/components/promo-card";
+import { SuggestionCard } from "@/components/suggestion-card";
 
 const imgThumbnail = "/7f12ea1300756f144a0fb5daaf68dbfc01103a46.png";
 
@@ -66,6 +68,24 @@ export default function ProductCardDemo() {
       <ProductList
         products={mockProducts}
         onSeeAll={() => console.log("See all clicked")}
+      />
+
+      <SuggestionCard
+        icon="/figma-assets/4794afc92222286db5854f0c3c3cb0dc7f271f09.png"
+        title="¿En qué te ayudo?"
+        description="Elige un tema para comenzar"
+        suggestions={[
+          { id: "1", label: "Ver productos en oferta" },
+          { id: "2", label: "Consultar mi pedido" },
+          { id: "3", label: "Hablar con un asesor" },
+        ]}
+        onSuggestionClick={(s) => console.log("Sugerencia:", s.label)}
+      />
+
+      <PromoCard
+        image="/figma-assets/ece298d0ec2c16f10310d45724b276a6035cb503.png"
+        alt="Promoción"
+        href="#"
       />
 
       <div className="w-[420px] px-6">
