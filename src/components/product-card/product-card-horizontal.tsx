@@ -51,7 +51,7 @@ export function ProductCardHorizontal({
   }
 
   return (
-    <div className="bg-white border border-card-border rounded-2xl shadow-[0px_4px_8px_0px_rgba(0,0,0,0.06)] px-4 py-3 flex items-center w-full max-w-[383px]">
+    <div className="bg-card-surface border border-card-border rounded-2xl shadow-[0px_4px_8px_0px_rgba(0,0,0,0.06)] px-4 py-3 flex items-center w-full max-w-[383px]">
       <div className="flex gap-2 items-start w-full">
         {/* Thumbnail */}
         <div className="relative w-[90px] h-[127px] rounded-sm shrink-0 overflow-hidden">
@@ -61,7 +61,7 @@ export function ProductCardHorizontal({
         {/* Product Details */}
         <div className="flex flex-col gap-3 flex-1 min-w-0">
           <div className="flex flex-col gap-0.5">
-            <p className="text-base font-bold text-black leading-snug">{name}</p>
+            <p className="text-base font-bold text-text-primary leading-snug">{name}</p>
             <p className="text-sm text-slate-600 leading-snug">{units}</p>
 
             {/* Price Row */}

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { sdkNav } from "@/lib/sdk-nav";
+import { ThemeSwitcher } from "@/components/sdk/theme-switcher";
 import dynamic from "next/dynamic";
 
 const demos: Record<string, React.ComponentType> = {
@@ -7,8 +8,7 @@ const demos: Record<string, React.ComponentType> = {
   "product-card-vertical": dynamic(() => import("@/components/demos/product-card-vertical-demo")),
   "product-list": dynamic(() => import("@/components/demos/product-list-demo")),
   "product-carousel": dynamic(() => import("@/components/demos/product-carousel-demo")),
-  "suggestion-card": dynamic(() => import("@/components/demos/suggestion-card-demo")),
-  "suggestion-carousel": dynamic(() => import("@/components/demos/suggestion-carousel-demo")),
+  "suggestions": dynamic(() => import("@/components/demos/suggestion-carousel-demo")),
   "promo-card": dynamic(() => import("@/components/demos/promo-card-demo")),
 };
 
@@ -29,6 +29,9 @@ export default async function ComponentPage({
       <div className="mb-10">
         <h1 className="text-3xl font-semibold text-black tracking-tight">{navItem.name}</h1>
         <p className="text-base text-[#666] mt-2 max-w-xl">{navItem.description}</p>
+        {navItem.subDescription && (
+          <p className="text-base text-[#666] mt-1 max-w-xl">{navItem.subDescription}</p>
+        )}
       </div>
 
       <div className="border-t border-[#e5e5e5] pt-8 md:pt-10">
@@ -36,7 +39,9 @@ export default async function ComponentPage({
           Live Demo
         </p>
         <div className="overflow-x-auto pb-4">
-          <Demo />
+          <ThemeSwitcher>
+            <Demo />
+          </ThemeSwitcher>
         </div>
       </div>
     </div>

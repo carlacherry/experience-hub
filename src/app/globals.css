@@ -4,13 +4,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
-    /* Fonts */
-    --font-sans: var(--font-sans), sans-serif;
-    --font-display: var(--font-display), sans-serif;
-    --font-mono: var(--font-mono), monospace;
-
-    /* Design tokens */
+/* Design tokens in plain @theme so Tailwind emits var(--color-*) references,
+   enabling CSS custom-property cascade override from ThemeSwitcher's style prop. */
+@theme {
+    --color-card-surface: #ffffff;
+    --color-text-primary: #000000;
     --color-promo-bg: #ecfdf5;
     --color-promo-text: #186c54;
     --color-promo-strikethrough: #0b996d;
@@ -25,6 +23,14 @@
     --color-suggestion-chip: #deeaff;
     --color-suggestion-chip-hover: #c8deff;
     --color-text-muted: #5e6c78;
+    --color-card-divider: #f1f5f9;
+}
+
+@theme inline {
+    /* Fonts */
+    --font-sans: var(--font-sans), sans-serif;
+    --font-display: var(--font-display), sans-serif;
+    --font-mono: var(--font-mono), monospace;
 
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);

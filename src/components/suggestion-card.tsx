@@ -28,8 +28,8 @@ export function SuggestionCard({
           <Image src={icon} alt={title} fill className="object-contain" />
         </div>
         <div className="flex flex-col gap-1">
-          <p className="text-base font-bold text-black leading-snug">{title}</p>
-          <p className="text-sm text-black leading-snug">{description}</p>
+          <p className="text-base font-bold text-text-primary leading-snug">{title}</p>
+          <p className="text-sm text-text-primary leading-snug">{description}</p>
         </div>
       </div>
 
@@ -40,7 +40,7 @@ export function SuggestionCard({
             key={suggestion.id}
             onClick={() => onSuggestionClick(suggestion)}
             aria-label={`Sugerir: ${suggestion.label}`}
-            className="bg-suggestion-chip rounded-2xl h-[46px] px-4 text-base text-black text-left hover:bg-suggestion-chip-hover transition-colors w-full"
+            className="bg-suggestion-chip rounded-2xl h-[46px] px-4 text-base text-text-primary text-left hover:bg-suggestion-chip-hover transition-colors w-full"
           >
             {suggestion.label}
           </button>

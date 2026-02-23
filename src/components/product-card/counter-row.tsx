@@ -20,7 +20,7 @@ export function CounterRow({ value, label, onIncrement, onDecrement }: CounterRo
       >
         <Minus size={14} />
       </button>
-      <span className="text-base text-black">
+      <span className="text-base text-text-primary">
         {value} {label}
       </span>
       <button
