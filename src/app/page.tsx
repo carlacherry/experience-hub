@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const entries = [
-  { label: "In App Experience", href: "/in-app" },
+  { label: "In App Experience", href: "/demo" },
   { label: "Whatsapp Experience", href: "/whatsapp" },
   { label: "SDK", href: "/sdk" },
 ];
