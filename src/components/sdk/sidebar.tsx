@@ -16,7 +16,7 @@ export function Sidebar({ onClose }: { onClose?: () => void }) {
             ← Home
           </Link>
           {onClose && (
-            <button onClick={onClose} aria-label="Cerrar menú" className="md:hidden text-[#989898] hover:text-black">
+            <button onClick={onClose} aria-label="Close menu" className="md:hidden text-[#989898] hover:text-black">
               <X size={16} />
             </button>
           )}

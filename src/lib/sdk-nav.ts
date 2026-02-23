@@ -1,43 +1,47 @@
 export interface NavItem {
   slug: string;
   name: string;
+  shortName: string;
   description: string;
+  subDescription?: string;
 }
 
 export const sdkNav: NavItem[] = [
   {
     slug: "product-card-horizontal",
     name: "Product Card Horizontal",
-    description: "Card de producto con imagen lateral, precio promocional, precio unitario y controles de cantidad por cajas y unidades.",
+    shortName: "Card Horizontal",
+    description: "Product card with a side image, promotional price, unit price, and quantity controls for boxes and units.",
   },
   {
     slug: "product-card-vertical",
     name: "Product Card Vertical",
-    description: "Card de producto compacta con imagen superior, precio, etiqueta de pedido mínimo y control de cantidad.",
+    shortName: "Card Vertical",
+    description: "Compact product card with a top image, price, minimum order label, and quantity control.",
   },
   {
     slug: "product-list",
     name: "Product List",
-    description: "Lista vertical de Product Cards Horizontales con separadores y botón 'See all'. Mínimo 2, máximo 5 productos.",
+    shortName: "Product List",
+    description: "Vertical list of Product Card Horizontals with dividers and a 'See all' button. Min 2, max 5 products.",
   },
   {
     slug: "product-carousel",
     name: "Product Carousel",
-    description: "Carrusel horizontal de Product Cards Verticales. Flechas en desktop, drag en mobile. Mínimo 3, máximo 5.",
+    shortName: "Prod. Carousel",
+    description: "Horizontal carousel of Product Card Verticals. Arrows on desktop, drag on mobile. Min 3, max 5.",
   },
   {
-    slug: "suggestion-card",
-    name: "Suggestion Card",
-    description: "Card iniciador de conversación con icono, título, descripción y chips de sugerencias clickeables.",
-  },
-  {
-    slug: "suggestion-carousel",
-    name: "Suggestion Carousel",
-    description: "Carrusel horizontal de Suggestion Cards. Mínimo 1, máximo 3 cards.",
+    slug: "suggestions",
+    name: "Suggestions",
+    shortName: "Suggestions",
+    description: "Conversation starter card with an icon, title, description, and clickable suggestion chips.",
+    subDescription: "Displayed as a horizontal carousel. Min 1, max 3 cards.",
   },
   {
     slug: "promo-card",
     name: "Promo Card",
-    description: "Banner de imagen clickeable con bordes redondeados. Acepta cualquier imagen y destino de navegación.",
+    shortName: "Promo Card",
+    description: "Clickable image banner with rounded corners. Accepts any image and navigation target.",
   },
 ];
