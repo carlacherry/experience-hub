@@ -42,10 +42,15 @@ type ChatMessage =
   | { id: string; role: "user" | "agent"; kind: "text"; text: React.ReactNode }
   | { id: string; role: "agent"; kind: "widget"; widget: WidgetType };
 
+// Template type for script definitions (no id yet)
+type MessageTemplate =
+  | { role: "user" | "agent"; kind: "text"; text: React.ReactNode }
+  | { role: "agent"; kind: "widget"; widget: WidgetType };
+
 // ─── Script ───────────────────────────────────────────────────────────────────
 
 interface FlowStep {
-  messages: Omit<ChatMessage, "id">[];
+  messages: MessageTemplate[];
   replies: string[];
   cartDelta?: number;
 }
@@ -176,7 +181,10 @@ export default function DemoPage() {
 
     for (let i = 0; i < step.messages.length; i++) {
       const msg = step.messages[i];
-      setMessages((prev) => [...prev, { id: genId(), ...msg } as ChatMessage]);
+      const newMsg: ChatMessage = msg.kind === "widget"
+        ? { id: genId(), role: "agent", kind: "widget", widget: msg.widget }
+        : { id: genId(), role: msg.role, kind: "text", text: msg.text };
+      setMessages((prev) => [...prev, newMsg]);
       if (i < step.messages.length - 1) await wait(500);
     }
 
