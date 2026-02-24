@@ -17,7 +17,7 @@ export default function DemoPage() {
   }
 
   return (
-    <div className="h-screen bg-[#d8d8d8] flex items-center justify-center overflow-hidden">
+    <div className="h-dvh bg-[#d8d8d8] flex items-center justify-center overflow-hidden">
 
       {/* Back to hub — desktop: floats in gray area; mobile: fixed top-left pill */}
       <Link
@@ -35,7 +35,7 @@ export default function DemoPage() {
         Hub
       </Link>
 
-      <div className="relative w-full h-[100dvh] md:w-[360px] md:h-[780px] md:rounded-[2.5rem] overflow-hidden md:shadow-2xl">
+      <div className="relative w-full h-dvh md:w-[360px] md:h-[780px] md:rounded-[2.5rem] overflow-hidden md:shadow-2xl">
 
         {/* Home — slides out left when search or chat opens */}
         <div
