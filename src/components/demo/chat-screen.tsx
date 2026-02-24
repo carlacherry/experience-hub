@@ -5,11 +5,13 @@ import {
   ArrowLeft,
   Camera,
   Mic,
+  Send,
   ShoppingCart,
   SlidersHorizontal,
 } from "lucide-react";
 import { ProductCarousel } from "@/components/product-carousel";
 import { ProductList } from "@/components/product-list";
+import { SuggestionCarousel } from "@/components/suggestion-carousel";
 
 // ─── Assets ──────────────────────────────────────────────────────────────────
 
@@ -36,7 +38,7 @@ const LIST_PRODUCTS = [
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type WidgetType = "carousel-suggested" | "carousel-more" | "list-cart";
+type WidgetType = "carousel-suggested" | "carousel-more" | "list-cart" | "suggestion-carousel-home";
 
 type ChatMessage =
   | { id: string; role: "user" | "agent"; kind: "text"; text: React.ReactNode }
@@ -70,6 +72,13 @@ const SCRIPT: Record<string, FlowStep> = {
       { role: "agent", kind: "text", text: "¿Los agrego al carrito?" },
     ],
     replies: ["Sí, agregar", "No, gracias"],
+  },
+  "📷 Armar con foto": {
+    messages: [
+      { role: "agent", kind: "text", text: "¡Perfecto! 📸 Envíame una foto de tu lista y me encargo de armarlo." },
+      { role: "agent", kind: "text", text: "¿Tienes la foto lista?" },
+    ],
+    replies: ["📷 Tomar foto ahora", "📁 Elegir de galería"],
   },
   "📷 Tomar foto ahora": {
     messages: [
@@ -185,6 +194,21 @@ const SCRIPT: Record<string, FlowStep> = {
   },
 };
 
+// ─── FadeIn ───────────────────────────────────────────────────────────────────
+
+function FadeIn({ children }: { children: React.ReactNode }) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const t = requestAnimationFrame(() => setVisible(true));
+    return () => cancelAnimationFrame(t);
+  }, []);
+  return (
+    <div className={`transition-opacity duration-500 ease-out ${visible ? "opacity-100" : "opacity-0"}`}>
+      {children}
+    </div>
+  );
+}
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function genId() {
@@ -193,17 +217,6 @@ function genId() {
 
 function wait(ms: number) {
   return new Promise<void>((r) => setTimeout(r, ms));
-}
-
-function renderWidget(type: WidgetType) {
-  switch (type) {
-    case "carousel-suggested":
-      return <ProductCarousel products={SUGGESTED_PRODUCTS} />;
-    case "carousel-more":
-      return <ProductCarousel products={MORE_PRODUCTS} />;
-    case "list-cart":
-      return <ProductList products={LIST_PRODUCTS} />;
-  }
 }
 
 // ─── Props ────────────────────────────────────────────────────────────────────
@@ -220,6 +233,7 @@ export function ChatScreen({ onBack, entry }: ChatScreenProps) {
   const [replies, setReplies] = useState<string[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [inputValue, setInputValue] = useState("");
   const messagesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -253,10 +267,18 @@ export function ChatScreen({ onBack, entry }: ChatScreenProps) {
         }
         setReplies(step.replies);
       } else {
+        setIsTyping(true);
+        await wait(800);
+        setIsTyping(false);
         setMessages([
-          { id: genId(), role: "agent", kind: "text", text: "Hola, soy tu asistente de pedidos. ¿En qué te ayudo hoy?" },
+          { id: genId(), role: "agent", kind: "text", text: "¡Hola! ¿En qué te puedo ayudar hoy? 👋" },
         ]);
-        setReplies(["📦 Armar pedido", "⭐ Pedido sugerido", "🏅 Mi desafío", "🎁 Ver promos"]);
+        await wait(600);
+        setMessages((prev) => [
+          ...prev,
+          { id: genId(), role: "agent", kind: "widget", widget: "suggestion-carousel-home" },
+        ]);
+        setReplies([]);
       }
     }
     init();
@@ -275,7 +297,17 @@ export function ChatScreen({ onBack, entry }: ChatScreenProps) {
     ]);
 
     const step = SCRIPT[label];
-    if (!step) return;
+    if (!step) {
+      setIsTyping(true);
+      await wait(900);
+      setIsTyping(false);
+      setMessages((prev) => [
+        ...prev,
+        { id: genId(), role: "agent", kind: "text", text: "Entendido 👍 ¿Puedo ayudarte con algo más?" },
+      ]);
+      setReplies(["⭐ Pedido sugerido", "🎁 Ver promos", "🏅 Mi desafío"]);
+      return;
+    }
 
     setIsTyping(true);
     await wait(1100);
@@ -294,21 +326,70 @@ export function ChatScreen({ onBack, entry }: ChatScreenProps) {
     setReplies(step.replies);
   }, []);
 
+  function handleSend() {
+    const text = inputValue.trim();
+    if (!text || isTyping) return;
+    setInputValue("");
+    handleReply(text);
+  }
+
+  function renderWidget(type: WidgetType) {
+    switch (type) {
+      case "carousel-suggested":
+        return <ProductCarousel products={SUGGESTED_PRODUCTS} />;
+      case "carousel-more":
+        return <ProductCarousel products={MORE_PRODUCTS} />;
+      case "list-cart":
+        return <ProductList products={LIST_PRODUCTS} />;
+      case "suggestion-carousel-home":
+        return (
+          <SuggestionCarousel
+            cards={[
+              {
+                icon: "/figma-assets/4794afc92222286db5854f0c3c3cb0dc7f271f09.png",
+                title: "¿En qué te ayudo?",
+                description: "Arma tu pedido con foto, voz o texto",
+                suggestions: [
+                  { id: "sugerido", label: "⭐ Pedido sugerido" },
+                  { id: "foto", label: "📷 Armar con foto" },
+                  { id: "promos", label: "🎁 Ver promos" },
+                ],
+                onSuggestionClick: (s) => handleReply(s.label),
+              },
+              {
+                icon: "/figma-assets/4794afc92222286db5854f0c3c3cb0dc7f271f09.png",
+                title: "Beneficios para tu tienda",
+                description: "Consulta tus puntos y desafíos activos",
+                suggestions: [
+                  { id: "desafios", label: "Desafíos activos" },
+                  { id: "puntos", label: "Ver mis puntos" },
+                  { id: "canjear", label: "Canjear puntos" },
+                ],
+                onSuggestionClick: (s) => handleReply(s.label),
+              },
+            ]}
+          />
+        );
+    }
+  }
+
   return (
-    <div className="flex flex-col w-full h-full bg-[#f0f0f0]">
+    <div className="flex flex-col w-full h-full bg-white">
 
       {/* Header */}
-      <header className="flex items-center justify-between px-4 py-3 bg-white border-b border-[#e5e5e5] shrink-0">
+      <header className="flex items-center justify-between px-4 py-3 bg-[#f1f5fc] shrink-0">
         <div className="flex items-center gap-3">
           <button aria-label="Volver" className="text-black" onClick={onBack}>
             <ArrowLeft size={20} />
           </button>
-          <div className="w-9 h-9 rounded-full bg-[#1B5E4C] flex items-center justify-center text-white font-semibold text-sm shrink-0">
-            O
-          </div>
+          <img
+            src="/be9849271c7b4c3566f244c04c73f47037244c87.png"
+            alt="Pepsichat Agent"
+            className="w-10 h-10 rounded-full object-cover shrink-0"
+          />
           <div>
-            <p className="text-sm font-semibold text-black leading-tight">Oris</p>
-            <p className="text-xs text-green-500 leading-tight">En línea</p>
+            <p className="text-sm font-semibold text-black leading-tight">Pepsichat Agent</p>
+            <p className="text-xs text-[#555] leading-tight">En línea</p>
           </div>
         </div>
         <div className="flex items-center gap-4">
@@ -331,15 +412,17 @@ export function ChatScreen({ onBack, entry }: ChatScreenProps) {
         {messages.map((msg) => {
           if (msg.kind === "widget") {
             return (
-              <div key={msg.id} className="px-3 w-full">
-                {renderWidget(msg.widget)}
-              </div>
+              <FadeIn key={msg.id}>
+                <div className="px-3 w-full">
+                  {renderWidget(msg.widget)}
+                </div>
+              </FadeIn>
             );
           }
           if (msg.role === "user") {
             return (
               <div key={msg.id} className="flex justify-end px-4">
-                <div className="max-w-[75%] bg-[#1a1a1a] text-white rounded-2xl rounded-br-sm px-4 py-2.5 text-sm leading-relaxed">
+                <div className="max-w-[75%] bg-[#F9FAFC] text-[#1e293b] rounded-2xl rounded-br-sm px-4 py-2.5 text-sm leading-relaxed">
                   {msg.text}
                 </div>
               </div>
@@ -369,36 +452,44 @@ export function ChatScreen({ onBack, entry }: ChatScreenProps) {
           </div>
         )}
 
-        {/* Quick replies */}
-        {replies.length > 0 && (
-          <div className="flex gap-2 flex-wrap px-4 pt-1">
-            {replies.map((r) => (
-              <button
-                key={r}
-                onClick={() => handleReply(r)}
-                className="px-4 py-2 rounded-full text-sm text-[#222] bg-white border border-[#ddd] hover:bg-[#f5f5f5] active:scale-95 transition-all"
-              >
-                {r}
-              </button>
-            ))}
-          </div>
-        )}
-
       </div>
 
+      {/* Suggestion chips — above composer */}
+      {replies.length > 0 && (
+        <div className="flex flex-col gap-2 px-4 py-3 bg-white shrink-0 items-center">
+          {replies.slice(0, 2).map((r) => (
+            <button
+              key={r}
+              onClick={() => handleReply(r)}
+              className="py-3 px-4 rounded-2xl text-sm font-medium text-[#1e293b] bg-[#F9FAFC] border border-[#ECEDEF] active:scale-[0.98] transition-transform"
+            >
+              {r}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Input bar */}
-      <div className="flex items-center gap-2 px-3 py-3 bg-white border-t border-[#e5e5e5] shrink-0">
-        <button aria-label="Cámara" className="text-[#999] p-1 shrink-0">
-          <Camera size={22} />
-        </button>
-        <div className="flex-1 bg-[#f0f0f0] rounded-full px-4 py-2.5 text-sm text-[#bbb] select-none">
-          Escribe un mensaje...
+      <div className="flex items-center gap-2 px-4 py-3 bg-white border-t border-[#e8e8e8] shrink-0">
+        <div className="flex-1 flex items-center gap-2 bg-white border border-[#e8e8e8] rounded-full px-4 py-2.5">
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={(e) => { if (e.key === "Enter") handleSend(); }}
+            placeholder="Escribe un mensaje..."
+            className="flex-1 text-sm text-[#1e293b] placeholder:text-[#7c8086] bg-transparent outline-none"
+          />
+          <button aria-label="Cámara" className="text-[#999] shrink-0">
+            <Camera size={18} />
+          </button>
         </div>
         <button
-          aria-label="Nota de voz"
-          className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white shrink-0"
+          onClick={handleSend}
+          aria-label={inputValue.trim() ? "Enviar" : "Nota de voz"}
+          className="w-12 h-12 rounded-full bg-[#2207F1] flex items-center justify-center text-white shrink-0 transition-transform active:scale-95"
         >
-          <Mic size={18} />
+          {inputValue.trim() ? <Send size={18} /> : <Mic size={18} />}
         </button>
       </div>
 

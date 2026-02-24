@@ -62,7 +62,7 @@ export function SearchScreen({ onBack, onOpenFoto, onOpenSugerido, isActive }: S
 
       {/* Search bar — focused state */}
       <div className="mx-4 my-3 shrink-0">
-        <div className="flex items-center gap-2 bg-white border-2 border-[#0057FF] rounded-full px-4 py-2.5">
+        <div className="flex items-center gap-2 bg-white border-2 border-[#2207F1] rounded-full px-4 py-2.5">
           <Search size={16} className="text-[#9ca3af] shrink-0" />
           <input
             ref={inputRef}
@@ -98,7 +98,7 @@ export function SearchScreen({ onBack, onOpenFoto, onOpenSugerido, isActive }: S
 
         {/* Brands section */}
         <div className="px-4 pt-6 pb-3 flex items-center gap-2">
-          <span className="text-[#0057FF]">♥</span>
+          <span className="text-[#2207F1]">♥</span>
           <h2 className="font-bold text-[17px] text-[#1e293b]">Conoce nuestras marcas</h2>
         </div>
 

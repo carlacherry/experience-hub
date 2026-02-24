@@ -104,7 +104,7 @@ function BannerCarousel() {
             onClick={() => goTo(i)}
             aria-label={`Banner ${i + 1}`}
             className={`h-1.5 rounded-full transition-all duration-250 ${
-              i === current ? "w-4 bg-[#0057FF]" : "w-1.5 bg-[#cbd5e1]"
+              i === current ? "w-4 bg-[#2207F1]" : "w-1.5 bg-[#cbd5e1]"
             }`}
           />
         ))}
@@ -184,8 +184,8 @@ export function HomeScreen({ onOpenChat, onOpenSearch }: HomeScreenProps) {
       {/* H. BottomNav */}
       <nav className="absolute bottom-0 left-0 right-0 flex items-center justify-around py-3 bg-white border-t border-[#e5e5e5]">
         <button className="flex flex-col items-center gap-0.5">
-          <Home size={20} className="text-[#0057FF]" />
-          <span className="text-[10px] font-medium text-[#0057FF]">Inicio</span>
+          <Home size={20} className="text-[#2207F1]" />
+          <span className="text-[10px] font-medium text-[#2207F1]">Inicio</span>
         </button>
         <button className="flex flex-col items-center gap-0.5">
           <Grid size={20} className="text-[#94a3b8]" />
@@ -205,7 +205,7 @@ export function HomeScreen({ onOpenChat, onOpenSearch }: HomeScreenProps) {
       <button
         aria-label="Abrir chat con Oris"
         onClick={onOpenChat}
-        className="absolute bottom-20 right-4 w-14 h-14 bg-[#0057FF] rounded-full shadow-lg flex items-center justify-center text-white hover:bg-[#0046cc] active:scale-95 transition-all z-10"
+        className="absolute bottom-20 right-4 w-14 h-14 bg-[#2207F1] rounded-full shadow-lg flex items-center justify-center text-white hover:bg-[#1a06c4] active:scale-95 transition-all z-10"
       >
         <MessageCircle size={26} />
       </button>

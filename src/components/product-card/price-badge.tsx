@@ -32,11 +32,11 @@ export function PriceBadge({
   return (
     <div className="flex items-center gap-1 bg-price-badge-bg rounded-full px-2 py-0.5 whitespace-nowrap">
       <span className="text-sm text-price-badge-text leading-snug">
-        {price.toFixed(2)}
+        {currency}{price.toFixed(2)}
       </span>
       {originalPrice && (
         <span className="text-xs text-price-badge-strikethrough line-through leading-snug">
-          {originalPrice.toFixed(2)}
+          {currency}{originalPrice.toFixed(2)}
         </span>
       )}
     </div>

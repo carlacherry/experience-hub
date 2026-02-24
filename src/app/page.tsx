@@ -56,7 +56,7 @@ export default function Home() {
           height={28}
         />
         <p className="text-base text-[#989898] tracking-tight absolute left-1/2 -translate-x-1/2 pt-5">
-          Agent Experience Hub
+          Yalo Chat SDK Experience
         </p>
       </header>
 
@@ -82,6 +82,12 @@ export default function Home() {
           </Link>
         ))}
       </nav>
+
+      {/* Footer */}
+      <footer className="px-6 py-5 flex flex-col gap-0.5">
+        <p className="text-[11px] text-[#989898]">© 2026 Yalo. All Rights Reserved.</p>
+        <p className="text-[11px] text-[#989898]">For demonstration purposes only. Features shown are representative of Yalo's SDK capabilities.</p>
+      </footer>
     </div>
   );
 }
