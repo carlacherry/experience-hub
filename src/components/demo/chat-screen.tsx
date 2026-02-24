@@ -234,7 +234,17 @@ export function ChatScreen({ onBack, entry }: ChatScreenProps) {
   const [isTyping, setIsTyping] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [inputValue, setInputValue] = useState("");
+  const [inputFocused, setInputFocused] = useState(false);
+  const [isAtBottom, setIsAtBottom] = useState(true);
   const messagesRef = useRef<HTMLDivElement>(null);
+
+  function handleMessagesScroll() {
+    const el = messagesRef.current;
+    if (!el) return;
+    setIsAtBottom(el.scrollTop + el.clientHeight >= el.scrollHeight - 16);
+  }
+
+  const showChips = replies.length > 0 && isAtBottom && !inputFocused;
 
   useEffect(() => {
     setMessages([]);
@@ -408,7 +418,7 @@ export function ChatScreen({ onBack, entry }: ChatScreenProps) {
       </header>
 
       {/* Messages */}
-      <div ref={messagesRef} className="flex-1 overflow-y-auto py-5 flex flex-col gap-2.5">
+      <div ref={messagesRef} onScroll={handleMessagesScroll} className="flex-1 overflow-y-auto py-5 flex flex-col gap-2.5">
         {messages.map((msg) => {
           if (msg.kind === "widget") {
             return (
@@ -455,8 +465,8 @@ export function ChatScreen({ onBack, entry }: ChatScreenProps) {
       </div>
 
       {/* Suggestion chips — above composer */}
-      {replies.length > 0 && (
-        <div className="flex flex-col gap-2 px-4 py-3 bg-white shrink-0 items-center">
+      <div className={`overflow-hidden transition-all duration-300 ease-in-out shrink-0 ${showChips ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}>
+        <div className="flex flex-col gap-2 px-4 py-3 items-center">
           {replies.slice(0, 2).map((r) => (
             <button
               key={r}
@@ -467,7 +477,7 @@ export function ChatScreen({ onBack, entry }: ChatScreenProps) {
             </button>
           ))}
         </div>
-      )}
+      </div>
 
       {/* Input bar */}
       <div className="flex items-center gap-2 px-4 py-3 bg-white border-t border-[#e8e8e8] shrink-0">
@@ -477,8 +487,10 @@ export function ChatScreen({ onBack, entry }: ChatScreenProps) {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={(e) => { if (e.key === "Enter") handleSend(); }}
+            onFocus={() => setInputFocused(true)}
+            onBlur={() => setInputFocused(false)}
             placeholder="Escribe un mensaje..."
-            className="flex-1 text-sm text-[#1e293b] placeholder:text-[#7c8086] bg-transparent outline-none"
+            className="flex-1 text-[16px] text-[#1e293b] placeholder:text-[#7c8086] bg-transparent outline-none"
           />
           <button aria-label="Cámara" className="text-[#999] shrink-0">
             <Camera size={18} />
