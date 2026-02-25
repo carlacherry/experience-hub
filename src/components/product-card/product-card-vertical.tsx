@@ -42,7 +42,7 @@ export function ProductCardVertical({
     <div className="bg-card-surface border border-card-border-subtle rounded-[14px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.06)] p-3 flex flex-col w-[160px] h-[272px] overflow-hidden">
       {/* Thumbnail */}
       <div className="relative w-full h-[116px] rounded-[4px] overflow-hidden shrink-0">
-        <Image src={image} alt={name} fill className="object-cover" />
+        <Image src={image} alt={name} fill className="object-contain" />
       </div>
 
       {/* Product Details */}

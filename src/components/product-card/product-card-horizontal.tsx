@@ -55,7 +55,7 @@ export function ProductCardHorizontal({
       <div className="flex gap-2 items-start w-full">
         {/* Thumbnail */}
         <div className="relative w-[90px] h-[127px] rounded-sm shrink-0 overflow-hidden">
-          <Image src={image} alt={name} fill className="object-cover" />
+          <Image src={image} alt={name} fill className="object-contain" />
         </div>
 
         {/* Product Details */}

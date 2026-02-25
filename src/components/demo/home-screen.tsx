@@ -7,17 +7,17 @@ import { LogoPepsiChat } from "@/components/demo/logo-pepsi-chat";
 
 // ─── Assets ──────────────────────────────────────────────────────────────────
 
-const imgPepsi355    = "/26d8a9d1d01a4c25efcdf1bef6122e0b0fbf6a1d.png";
-const imgAdrenaline  = "/800d978338bdc8a7292492489829c28cc28ec56e.png";
-const imgGatorade68  = "/da57af3f60b829a8214c2acc8c5fff149344177a.png";
-const imgPetit       = "/ca7f5214974730d0510a6b1add126297cf417c87.png";
-const imgLipton      = "/66ad5f7309642e2e97628d9256d601642fd7f314.png";
-const imgGatorade94  = "/b282e665443816fd37c7d7699468c35eac470499.png";
+const imgPepsi355    = "/product-img/Pepsi.png";
+const imgAdrenaline  = "/product-img/Seven.png";
+const imgGatorade68  = "/product-img/Gatorade.png";
+const imgPetit       = "/product-img/Fruta.png";
+const imgLipton      = "/product-img/Lipton.png";
+const imgGatorade94  = "/product-img/Gatorade.png";
 
 const BANNERS = [
-  { src: "/1612c4fa181da6fae0c66cf15c18ef456377bdb0.png", alt: "Pepsi – Sed de más" },
-  { src: "/7649b764653432ee3e82cd5bd4a53586993b8250.png", alt: "Banner 2" },
-  { src: "/92a23892cae046555186c8d267a5e71892abb945.png", alt: "Banner 3" },
+  { src: "/product-img/Banner 1.png", alt: "Banner 1" },
+  { src: "/product-img/Banner 2.png", alt: "Banner 2" },
+  { src: "/product-img/Banner 3.png", alt: "Banner 3" },
 ];
 
 const HOME_PRODUCTS = [

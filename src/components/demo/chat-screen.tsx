@@ -15,25 +15,27 @@ import { SuggestionCarousel } from "@/components/suggestion-carousel";
 
 // ─── Assets ──────────────────────────────────────────────────────────────────
 
-const img = "/7f12ea1300756f144a0fb5daaf68dbfc01103a46.png";
+const imgPepsi  = "/product-img/Pepsi.png";
+const imgSeven  = "/product-img/Seven.png";
+const imgFruta  = "/product-img/Fruta.png";
 
 const SUGGESTED_PRODUCTS = [
-  { name: "Pepsi Original 355ml", minOrderLabel: "Desde 5 cajas", price: 68, originalPrice: 70, image: img },
-  { name: "Pepsi Original 3L Pet", minOrderLabel: "Desde 3 cajas", price: 108, originalPrice: 110, image: img },
-  { name: "Pepsi Zero 355ml", minOrderLabel: "Desde 3 cajas", price: 65, originalPrice: 68, image: img },
-  { name: "Pepsi Light 2L", minOrderLabel: "Desde 4 cajas", price: 92, image: img },
+  { name: "Pepsi Original 355ml", minOrderLabel: "Desde 5 cajas", price: 68, originalPrice: 70, image: imgPepsi },
+  { name: "Pepsi Original 3L Pet", minOrderLabel: "Desde 3 cajas", price: 108, originalPrice: 110, image: imgPepsi },
+  { name: "Pepsi Zero 355ml", minOrderLabel: "Desde 3 cajas", price: 65, originalPrice: 68, image: imgPepsi },
+  { name: "Pepsi Light 2L", minOrderLabel: "Desde 4 cajas", price: 92, image: imgPepsi },
 ];
 
 const MORE_PRODUCTS = [
-  { name: "7UP 355ml", minOrderLabel: "Desde 4 cajas", price: 58, originalPrice: 62, image: img },
-  { name: "Mountain Dew 355ml", minOrderLabel: "Desde 5 cajas", price: 62, image: img },
-  { name: "Mirinda Naranja 2L", minOrderLabel: "Desde 3 cajas", price: 78, originalPrice: 82, image: img },
+  { name: "7UP 355ml", minOrderLabel: "Desde 4 cajas", price: 58, originalPrice: 62, image: imgSeven },
+  { name: "Mountain Dew 355ml", minOrderLabel: "Desde 5 cajas", price: 62, image: imgSeven },
+  { name: "Mirinda Naranja 2L", minOrderLabel: "Desde 3 cajas", price: 78, originalPrice: 82, image: imgFruta },
 ];
 
 const LIST_PRODUCTS = [
-  { name: "Pepsi Original 355ml", units: "5 cajas · 24 uds c/u", price: 68, originalPrice: 70, unitPrice: 2.83, image: img, counters: [{ label: "cajas", initial: 5 }, { label: "uds", initial: 0 }] },
-  { name: "Pepsi Original 3L Pet", units: "3 cajas · 6 uds c/u", price: 108, originalPrice: 110, unitPrice: 18, image: img, counters: [{ label: "cajas", initial: 3 }, { label: "uds", initial: 0 }] },
-  { name: "Pepsi Zero 355ml", units: "3 cajas · 24 uds c/u", price: 65, originalPrice: 68, image: img, counters: [{ label: "cajas", initial: 3 }, { label: "uds", initial: 0 }] },
+  { name: "Pepsi Original 355ml", units: "5 cajas · 24 uds c/u", price: 68, originalPrice: 70, unitPrice: 2.83, image: imgPepsi, counters: [{ label: "cajas", initial: 5 }, { label: "uds", initial: 0 }] },
+  { name: "Pepsi Original 3L Pet", units: "3 cajas · 6 uds c/u", price: 108, originalPrice: 110, unitPrice: 18, image: imgPepsi, counters: [{ label: "cajas", initial: 3 }, { label: "uds", initial: 0 }] },
+  { name: "Pepsi Zero 355ml", units: "3 cajas · 24 uds c/u", price: 65, originalPrice: 68, image: imgPepsi, counters: [{ label: "cajas", initial: 3 }, { label: "uds", initial: 0 }] },
 ];
 
 // ─── Types ────────────────────────────────────────────────────────────────────
