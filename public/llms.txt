@@ -1,0 +1,27 @@
+# Yalo Chat SDK — Design Guidelines
+
+> Design documentation for the Yalo Chat SDK. Covers the chat shell anatomy, widget components, theming, copy rules, and the process for creating new widgets. Intended for designers, engineers, sales teams, and AI agents building chat experiences across Android, iOS, Flutter, and Web.
+
+## Overview
+
+- [Welcome](https://agentexperiencehub.netlify.app/sdk/welcome): Purpose, scope, and 7 core UX principles (Progressive Disclosure, Simplicity, Predict User Actions, Consistency, Forgiveness & Recovery, Accessibility First, Performance Is UX).
+- [Design Widgets](https://agentexperiencehub.netlify.app/sdk/design-widgets): White-label philosophy (Structure / Theme / Copy layers), widget anatomy (Header / Content Area / Action Zone / Footer), and the full checklist for proposing a new widget.
+
+## Chat Shell
+
+- [Chat Window](https://agentexperiencehub.netlify.app/sdk/chat-shell): Anatomy and specs for the four zones — Header, Messages, Quick Replies, and Composer. Covers every element, what is configurable, what is hideable, and platform-specific props.
+- [Customization](https://agentexperiencehub.netlify.app/sdk/chat-customization): CSS custom properties (Web) and ChatTheme props (Flutter) for styling the chat shell.
+
+## Widget Components
+
+- [Product Card Horizontal](https://agentexperiencehub.netlify.app/sdk/product-card-horizontal): Side-image card with promotional price, unit price, and separate cases/units quantity counters.
+- [Product Card Vertical](https://agentexperiencehub.netlify.app/sdk/product-card-vertical): Compact top-image card with price, minimum order label, and a single quantity counter.
+- [Product List](https://agentexperiencehub.netlify.app/sdk/product-list): Vertical list of Product Card Horizontals with dividers and a "See all" action. Min 2, max 5 products.
+- [Product Carousel](https://agentexperiencehub.netlify.app/sdk/product-carousel): Horizontal scrolling carousel of Product Card Verticals. Arrows on desktop, drag on mobile. Min 3, max 5 products.
+- [Suggestions](https://agentexperiencehub.netlify.app/sdk/suggestions): Conversation starter cards with icon, title, description, and clickable suggestion chips. Displayed as a horizontal carousel. Min 1, max 3 cards.
+- [Promo Card](https://agentexperiencehub.netlify.app/sdk/promo-card): Clickable full-width image banner with rounded corners. Accepts any image and navigation target.
+
+## Source
+
+- GitHub: https://github.com/yalochat/chat-sdk
+- Widget Design Guidelines (full): https://agentexperiencehub.netlify.app/WIDGET_DESIGN_GUIDELINES.md
