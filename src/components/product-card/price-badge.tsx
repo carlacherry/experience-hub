@@ -10,7 +10,7 @@ export interface PriceBadgeProps {
 export function PriceBadge({
   price,
   originalPrice,
-  currency = "Q",
+  currency = "$",
   variant = "default",
 }: PriceBadgeProps) {
   if (variant === "promo") {

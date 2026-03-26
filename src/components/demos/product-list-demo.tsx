@@ -9,29 +9,29 @@ export default function ProductListDemo() {
     <ProductList
       products={[
         {
-          name: "Pepsi original 355ml Pet",
-          units: "24 unidades",
+          name: "Sparkling Water 355ml",
+          units: "24 units",
           price: 68,
           originalPrice: 70,
           unitPrice: 3.75,
           image: img,
-          counters: [{ label: "cajas", initial: 5 }, { label: "uds", initial: 0 }],
+          counters: [{ label: "cases", initial: 5 }, { label: "units", initial: 0 }],
         },
         {
-          name: "Pepsi original 3 Litros Pet",
-          units: "6 unidades",
+          name: "Orange Juice 3L",
+          units: "6 units",
           price: 108,
           originalPrice: 110,
           unitPrice: 18,
           image: img,
-          counters: [{ label: "cajas", initial: 0 }, { label: "uds", initial: 0 }],
+          counters: [{ label: "cases", initial: 0 }, { label: "units", initial: 0 }],
         },
         {
-          name: "Pepsi Zero 355ml Pet",
-          units: "24 unidades",
+          name: "Iced Tea 355ml",
+          units: "24 units",
           price: 65,
           image: img,
-          counters: [{ label: "cajas", initial: 0 }, { label: "uds", initial: 0 }],
+          counters: [{ label: "cases", initial: 0 }, { label: "units", initial: 0 }],
         },
       ]}
       onSeeAll={() => console.log("See all")}

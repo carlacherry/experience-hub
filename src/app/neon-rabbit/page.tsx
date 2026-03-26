@@ -236,7 +236,7 @@ export default function SandboxPage() {
       <p className="mt-3 text-sm text-[#989898]">Experimental. Handle with care.</p>
 
       {/* Cart widget proposals */}
-      <div className="mt-16 flex flex-col gap-16">
+      <div className="mt-16 flex flex-row flex-wrap gap-10">
         {proposals.map(({ id, name, desc, component }) => (
           <section key={id} className="flex flex-col gap-4">
             <div>

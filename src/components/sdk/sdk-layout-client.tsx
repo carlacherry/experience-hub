@@ -5,7 +5,7 @@ import { Menu } from "lucide-react";
 import { Sidebar } from "./sidebar";
 import { WidgetNav } from "./widget-nav";
 import { ThemeProvider } from "@/lib/theme-context";
-import { ThemePicker } from "./theme-picker";
+
 
 export function SdkLayoutClient({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -48,9 +48,6 @@ export function SdkLayoutClient({ children }: { children: React.ReactNode }) {
 
           {children}
         </main>
-
-        {/* Floating theme switcher */}
-        <ThemePicker />
       </div>
     </ThemeProvider>
   );

@@ -9,10 +9,10 @@ export default function ProductCarouselDemo() {
     <div className="w-full px-2">
       <ProductCarousel
         products={[
-          { name: "Pepsi original 3 Litros Pet", minOrderLabel: "Desde 5 cajas", price: 108, originalPrice: 110, image: img },
-          { name: "Pepsi Zero 355ml Pet", minOrderLabel: "Desde 3 cajas", price: 65, originalPrice: 68, image: img },
-          { name: "Pepsi Light 2 Litros", minOrderLabel: "Desde 4 cajas", price: 92, image: img },
-          { name: "Pepsi original 600ml", price: 45, originalPrice: 48, image: img },
+          { name: "Orange Juice 3L", minOrderLabel: "From 5 cases", price: 108, originalPrice: 110, image: img },
+          { name: "Sparkling Water 355ml", minOrderLabel: "From 3 cases", price: 65, originalPrice: 68, image: img },
+          { name: "Lemonade 2L", minOrderLabel: "From 4 cases", price: 92, image: img },
+          { name: "Iced Tea 600ml", price: 45, originalPrice: 48, image: img },
         ]}
       />
     </div>

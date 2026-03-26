@@ -34,8 +34,8 @@ export function ProductCardHorizontal({
   originalPrice,
   unitPrice,
   image,
-  counters = [{ label: "cajas", initial: 0 }, { label: "uds", initial: 0 }],
-  currency = "Q",
+  counters = [{ label: "cases", initial: 0 }, { label: "units", initial: 0 }],
+  currency = "$",
   onQuantityChange,
 }: ProductCardHorizontalProps) {
   const [quantities, setQuantities] = useState<ProductQuantities>(

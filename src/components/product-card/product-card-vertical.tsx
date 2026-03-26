@@ -23,9 +23,9 @@ export function ProductCardVertical({
   price,
   originalPrice,
   image,
-  counterLabel = "uds",
+  counterLabel = "units",
   initialQty = 0,
-  currency = "Q",
+  currency = "$",
   onQuantityChange,
 }: ProductCardVerticalProps) {
   const [qty, setQty] = useState(initialQty);

@@ -6,6 +6,36 @@ export interface NavItem {
   subDescription?: string;
 }
 
+export const overviewNav: NavItem[] = [
+  {
+    slug: "welcome",
+    name: "Welcome",
+    shortName: "Welcome",
+    description: "Purpose, scope, and core principles behind the Yalo Chat SDK.",
+  },
+  {
+    slug: "design-widgets",
+    name: "Design Widgets",
+    shortName: "Design Widgets",
+    description: "White-label philosophy, widget structure, and the checklist for creating new widgets.",
+  },
+];
+
+export const chatShellNav: NavItem[] = [
+  {
+    slug: "chat-shell",
+    name: "Chat Window",
+    shortName: "Chat Window",
+    description: "The shell that wraps every conversation — header, message area, quick replies, and composer.",
+  },
+  {
+    slug: "chat-customization",
+    name: "Customization",
+    shortName: "Customization",
+    description: "CSS custom properties and Flutter ChatTheme props for styling the chat window.",
+  },
+];
+
 export const sdkNav: NavItem[] = [
   {
     slug: "product-card-horizontal",
